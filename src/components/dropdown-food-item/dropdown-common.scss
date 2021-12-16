@@ -1,0 +1,32 @@
+.dropdown-item {
+  z-index: 100;
+  display: flex;
+  display: absolute;
+  cursor: pointer;
+
+  &:hover{
+    background-color: rgba(13, 24, 135, 0.2);
+  }
+
+  .dropdown-image-container {
+    width: 30%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+
+    .dropdown-image {
+      max-width: 70px;
+      max-height: 70px;
+      border-radius: 10%;
+      margin: 10px;
+    }
+
+  }
+  .food-item {
+    width: 100%;
+    text-align: left;
+    border-left: 1px solid #e0e0e0;
+    padding-left: 15px;
+    font-weight: bold;
+  }
+}

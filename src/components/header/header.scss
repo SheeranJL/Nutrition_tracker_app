@@ -1,0 +1,59 @@
+  .header-component {
+  background-color: rgba(62, 0, 158);
+  padding-bottom: 3%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .dropdown-modal {
+    z-index: 100;
+    border-radius: 1%;
+    background-color: white;
+    position: absolute;
+    margin-top: 70px;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .input-and-submit {
+    display: flex;
+    flex-direction: row;
+
+    .submit-button {
+      background-color: #c4c2c2;
+      margin-top: 10px;
+      height: 40px;
+      border: none;
+    }
+
+    .input {
+      margin-top: 10px;
+      height: 40px;
+      width: 400px;
+    }
+
+  }
+
+
+}
+
+
+
+
+@media only screen and (max-width: 870px) {
+  .header-component {
+    z-index: 100000;
+    width: 100%;
+    .input-and-submit {
+      width: 100%;
+      .input {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,150 @@
+.select-modal-container {
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  width: 50%;
+  height: auto;
+  position: absolute;
+  border: 1px solid black;
+  background-color: white;
+  padding: 10px;
+  margin-top: 70px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  text-align: center;
+
+  .select-modal-image-and-close {
+    display: flex;
+    flex-direction: row;
+
+    .modal-image {
+      max-width: 100px;
+      max-height: 100px;
+      justify-content: space-around;
+    }
+
+    .modal-close {
+      margin-left: auto;
+      cursor: pointer;
+      color: rgba(62, 0, 158);
+      padding-right: 5px;
+      padding-top: 0px;
+      font-size: 20px;
+    }
+  }
+
+  .serving-info {
+
+    .select-serving {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .servings-info-left {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        background-color: #e0e0e0;
+        border-bottom: 4px solid rgba(62, 0, 158);
+
+
+        .serving-text {
+          font-size: 12px;
+
+        }
+
+        .serving-size-select {
+          align-self: center;
+          font-size: 24px;
+          padding-top: 5px;
+        }
+
+      }
+
+      .arrows {
+        background-color: grey;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .arrow {
+          font-weight: bold;
+          position: relative;
+          font-size: 20px;
+          margin: 0;
+          padding: 0;
+          cursor: pointer;
+          height: 34px;
+        }
+      }
+
+
+      .servings-info-right {
+        display: flex;
+        margin-left: auto;
+        justify-content: space-between;
+
+        .measurements {
+          display: flex;
+          flex-direction: column;
+          padding-right: 20px;
+          padding-left: 10px;
+
+          .unit-measurement {
+            font-weight: bold;
+            text-align: right;
+            font-size: 24px;
+          }
+        }
+
+        .nut-info {
+          display: flex;
+          flex-direction: column;
+
+
+          .calories {
+            font-weight: bold;
+            text-align: right;
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  .meal-time-dropdown {
+    height: 40px;
+    background-color: #e0e0e0;
+  }
+
+}
+
+select {
+  width: 100%;
+  height: 200%;
+  margin-top: 10px;
+}
+
+.modal-add-button-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  .modal-add-button {
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    background-color: rgba(62, 0, 158);
+    border-radius: 10%;
+    color: white;
+    border: none;
+    height: 25px;
+    width: 50px;
+  }
+}
