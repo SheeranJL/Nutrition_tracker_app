@@ -9,9 +9,10 @@
   align-items: center;
   margin-left: auto;
   border-radius: 50%;
-  position: relative;
+  position: fixed;
   bottom: 0;
   right: 0;
+  left: 0;
   margin-bottom: 5%;
   margin-right: 5%;
   position: fixed;
@@ -28,4 +29,20 @@
     margin-bottom: 15px;
   }
 
+}
+
+@media only screen and (max-width: 450px) {
+  .add-icon-container {
+    height: 50px;
+    position: fixed;
+    width: 50px;
+    z-index: 20000000000;
+
+
+    .add-icon {
+      padding-top: 5px;
+      padding-right: 2px;
+      font-size: 37.5px;
+    }
+  }
 }

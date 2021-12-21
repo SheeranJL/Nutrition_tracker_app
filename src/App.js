@@ -12,11 +12,11 @@ const App = () => {
 
   return (
 
-    <>
+    <div className='app-container'>
       <Header />
       <MainPage />
       <NewFoodIcon />
-    </>
+    </div>
   );
 }
 

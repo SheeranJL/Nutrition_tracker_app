@@ -121,6 +121,11 @@
   .meal-time-dropdown {
     height: 40px;
     background-color: #e0e0e0;
+
+    option {
+      width: 10px;
+    }
+
   }
 
 }

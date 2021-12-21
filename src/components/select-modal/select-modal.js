@@ -93,10 +93,10 @@ const SelectModal = ({item, hidden, handleClick}) => {
               <div className='add-to-meal'>
 
                 <select ref={selectElement} className='meal-time-dropdown' name='meal-type' id='meal-type'>
-                  <option value='breakfast'>Breakfast</option>
-                  <option value='lunch'>Lunch</option>
-                  <option value='dinner'>Dinner</option>
-                  <option value='snack'>Snack</option>
+                  <option className='dropdown-value' value='breakfast'>Breakfast</option>
+                  <option className='dropdown-value' value='lunch'>Lunch</option>
+                  <option className='dropdown-value' value='dinner'>Dinner</option>
+                  <option className='dropdown-value' value='snack'>Snack</option>
                 </select>
 
                 <div className='modal-add-button-container'>
