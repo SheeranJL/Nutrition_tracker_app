@@ -1,5 +1,6 @@
 {
   "name": "nutrition-app",
+  "homepage": "https://SheeranJL.github.io/Nutrition_tracker_app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
