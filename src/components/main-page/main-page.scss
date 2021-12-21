@@ -1,9 +1,10 @@
 .main-page {
   display: flex;
+  height: 100vw;
 
   .profile-section {
     width: 30%;
-    height: 100vw;
+    height: 1000vw;
     z-index: 10000;
     background-color: rgba(224, 224, 224)
   }

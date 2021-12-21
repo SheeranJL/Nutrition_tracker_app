@@ -24,8 +24,6 @@ const FoodItem = ({food}) => {
     </div>
 
     <div className='toggle-options'>
-    <button className='toggle-buttons' onClick={() => actions.increaseItem(food)}>&#9650;</button>
-    <button className='toggle-buttons' onClick={() => actions.decreaseItem(food)}>&#9660;</button>
     <button className='toggle-buttons' onClick={() => actions.deleteItem(food)}>&#10060;</button>
     </div>
 

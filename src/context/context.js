@@ -58,10 +58,10 @@ export const Provider = (props) => {
     const existing = foods.find(food => food.mealTime === item.mealTime && food.tag_id === item.tag_id);
     const filterList = foods.filter(food => food !== existing);
 
-      const increaseItemQuantity = {
-        ...existing,
-        serving_qty: existing.serving_qty + 1
-      }
+    const increaseItemQuantity = {
+      ...existing,
+      serving_qty: existing.serving_qty + 1
+    }
 
       setFoods([
         increaseItemQuantity,
