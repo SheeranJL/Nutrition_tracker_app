@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {appContext} from '../../context/context.js';
+import {auth} from '../../firebase/firebase.js'
 import './profile.scss';
 
 const Profile = () => {
@@ -28,30 +29,42 @@ const Profile = () => {
   }
 
   //This function will toggle the login modal open/close//
-  const handleClick = () => {
+  const handleToggleModal = () => {
     actions.setCloseModal(!data.closeModal);
     console.log('test')
   }
 
+  const handleSignout = async() => {
+    await auth.signOut();
+    actions.setCloseModal(true);
+  }
 
   return (
     <div className='profile-container'>
 
       <div className='person-and-info'>
-        <div className='person-info'>
-          <p className='weight-height'>57</p>
-          <p className='metric'>kg</p>
+    
+
+        <div className='profile-pic-container' onClick={data.currentUser ? handleSignout : handleToggleModal} >
+
+          {
+            data.currentUser
+            ? (
+              <>
+              <img className='profile-picture' src={'https://randomuser.me/api/portraits/women/80.jpg'} style={hover ? {opacity: '0.3'} : {opacity: '1'}}/>
+              <div className='hover-picture'><p>Logout</p></div>
+              </>
+            )
+            : (
+              <>
+              <img className='profile-picture' src='https://randomuser.me/api/portraits/women/80.jpg' style={hover ? {opacity: '0.3'} : {opacity: '1'}}/>
+              <div className='hover-picture'><p>Login</p></div>
+              </>
+            )
+          }
         </div>
 
-        <div className='profile-pic-container' onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)} onClick={handleClick} >
-          <img className='profile-picture' src='https://randomuser.me/api/portraits/women/80.jpg' style={hover ? {opacity: '0.3'} : {opacity: '1'}}/>
-          <div className='hover-picture'><p>Login</p></div>
-        </div>
 
-        <div className='person-info'>
-          <p className='weight-height'>163</p>
-          <p className='metric'>cm</p>
-        </div>
       </div>
 
       <span className='person-name'>Fake User</span>

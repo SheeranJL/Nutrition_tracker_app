@@ -109,7 +109,8 @@ export const Provider = (props) => {
         decreaseItem,
         setGoal,
         setModalFocus,
-        setCloseModal
+        setCloseModal,
+        setCurrentUser
       },
       data: {
         search,
@@ -118,7 +119,8 @@ export const Provider = (props) => {
         foods,
         goal,
         modalFocus,
-        closeModal
+        closeModal,
+        currentUser
       }
     }}>
     {props.children}

@@ -1,10 +1,14 @@
 import {react} from 'react';
 import './button.scss'
 
-const CustomButton = (props, ...rest) => {
+const CustomButton = ({children, isGoogleSignIn, ...rest}) => {
   return (
     <div className='button-container' >
-      <button type='submit' className={props.isGoogleSignIn ? 'google' : ''}>{props.children}</button>
+
+      <button {...rest} type='submit' className={isGoogleSignIn ? 'google' : ''}>
+        {children}
+      </button>
+
     </div>
   )
 }

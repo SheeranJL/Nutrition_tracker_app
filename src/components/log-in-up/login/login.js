@@ -3,6 +3,8 @@ import {appContext} from '../../../context/context.js';
 import './login.scss';
 import CustomButton from '../../button/button.js';
 
+import {signInWithGoogle} from '../../../firebase/firebase.js';
+
 const Login = ({signMethod, setSignMethod}) => {
 
   const {data, actions} = useContext(appContext);
@@ -46,7 +48,7 @@ const Login = ({signMethod, setSignMethod}) => {
 
         <div className='buttons'>
           <CustomButton type='submit' className='button'>Sign In</CustomButton>
-          <CustomButton type='button' isGoogleSignIn>Sign In</CustomButton>
+          <CustomButton type='button' isGoogleSignIn onClick={signInWithGoogle}>Sign In</CustomButton>
         </div>
 
       </form>
