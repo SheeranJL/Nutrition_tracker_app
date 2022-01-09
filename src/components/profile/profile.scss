@@ -13,6 +13,21 @@
     margin-top: 20px;
     justify-content: space-around;
 
+    .profile-pic-container {
+      position: relative;
+
+      .hover-picture {
+        position: absolute;
+        top: 0;
+        margin-top: 50px;
+        margin-left: 25px;
+        color: red;
+        font-weight: bold;
+        font-size: 30px;
+        cursor: pointer;
+      }
+    }
+
     .person-info {
       display: flex;
       width: 80px;
@@ -43,6 +58,7 @@
 
     .profile-picture {
       border-radius: 50%;
+      cursor: pointer;
     }
   }
 

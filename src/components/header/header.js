@@ -5,6 +5,7 @@ import {appContext} from '../../context/context.js';
 import Dropdown from '../dropdown/dropdown.js';
 
 
+
 const Header = () => {
 
   const {actions: {setSearch, setModalFocus}, data: {search, modalFocus}} = useContext(appContext);
@@ -27,12 +28,14 @@ const Header = () => {
 
   return (
     <div className='header-component'>
+
       <form onSubmit={handleSubmit}>
         <div className='input-and-submit'>
           <button className='submit-button' type='submit'>&#128269;</button>
           <input className='input' type='text' placeholder='Search foods...' onChange={handleChange} value={query} onClick={handleFocus}/>
         </div>
       </form>
+
       <div >
       {
         modalFocus

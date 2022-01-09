@@ -11,6 +11,7 @@
   .input-and-submit {
     display: flex;
     flex-direction: row;
+    width: 80%;
 
     .submit-button {
       background-color: #c4c2c2;
@@ -27,6 +28,9 @@
 
   }
 
+  .setting-buttons {
+    margin-right: auto;
+  }
 
 }
 

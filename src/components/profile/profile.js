@@ -1,47 +1,37 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {appContext} from '../../context/context.js';
 import './profile.scss';
 
 const Profile = () => {
 
-  const {data} = useContext(appContext);
+  const {data, actions} = useContext(appContext);
+  const [hover, setHover] = useState(false)
+  const history = useHistory();
 
-  ///calculations///
 
+  //This function will return an integer representing the total amount of consumed calories for each item in their basket//
   const consumedCalories = data.foods.reduce((total, current) => {
     return total += Math.ceil(current.full_nutrients[4].value * current.serving_qty)
   }, 0)
-
   const percentageGoal = (consumedCalories / data.goal * 100).toFixed(0);
 
-  console.log(percentageGoal);
 
+  //This function will calculate the total calories of each selected food item for a given meal type of the day and returns the value//
+  const calculateCalories = (timePeriod) => {
+    const total = data.foods
+      .filter((item) => item.mealTime === timePeriod)
+      .reduce((total, current) => {
+        return total += Math.ceil(current.full_nutrients[4].value * current.serving_qty)
+      }, 0)
+    return total;
+  }
 
-  const breakfastCalories = data.foods
-    .filter((item) => item.mealTime === 'breakfast')
-    .reduce((total, current) => {
-      return total += Math.ceil(current.full_nutrients[4].value * current.serving_qty)
-    }, 0)
-
-  const lunchCalories = data.foods
-    .filter((item) => item.mealTime === 'lunch')
-    .reduce((total, current) => {
-      return total += Math.ceil(current.full_nutrients[4].value * current.serving_qty)
-    }, 0)
-
-  const dinnerCalories = data.foods
-    .filter((item) => item.mealTime === 'dinner')
-    .reduce((total, current) => {
-      return total += Math.ceil(current.full_nutrients[4].value * current.serving_qty)
-    }, 0)
-
-  const snackCalories = data.foods
-    .filter((item) => item.mealTime === 'breakfast')
-    .reduce((total, current) => {
-      return total += Math.ceil(current.full_nutrients[4].value * current.serving_qty)
-    }, 0)
-
-
+  //This function will toggle the login modal open/close//
+  const handleClick = () => {
+    actions.setCloseModal(!data.closeModal);
+    console.log('test')
+  }
 
 
   return (
@@ -53,7 +43,10 @@ const Profile = () => {
           <p className='metric'>kg</p>
         </div>
 
-        <img className='profile-picture' src='https://randomuser.me/api/portraits/women/80.jpg'/>
+        <div className='profile-pic-container' onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)} onClick={handleClick} >
+          <img className='profile-picture' src='https://randomuser.me/api/portraits/women/80.jpg' style={hover ? {opacity: '0.3'} : {opacity: '1'}}/>
+          <div className='hover-picture'><p>Login</p></div>
+        </div>
 
         <div className='person-info'>
           <p className='weight-height'>163</p>
@@ -82,22 +75,22 @@ const Profile = () => {
 
       <div className='meal-time-breakdown-container'>
         <div className='meal-time'>
-          <h3>{breakfastCalories}</h3>
+          <h3>{calculateCalories('breakfast')}</h3>
           <span>Breakfast</span>
         </div>
 
         <div className='meal-time'>
-          <h3>{lunchCalories}</h3>
+          <h3>{calculateCalories('lunch')}</h3>
           <span>Lunch</span>
         </div>
 
         <div className='meal-time'>
-          <h3>{dinnerCalories}</h3>
+          <h3>{calculateCalories('dinner')}</h3>
           <span>Dinner</span>
         </div>
 
         <div className='meal-time'>
-          <h3>{snackCalories}</h3>
+          <h3>{calculateCalories('snack')}</h3>
           <span>Snack</span>
         </div>
       </div>

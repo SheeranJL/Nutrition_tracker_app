@@ -6,7 +6,8 @@
     width: 30%;
     height: auto;
     z-index: 10000;
-    background-color: rgba(224, 224, 224)
+    background-color: rgba(224, 224, 224);
+    position: relative;
   }
 
   .food-section {
@@ -20,6 +21,18 @@
     font-size: 30px;
   }
 
+  .sign-in-modal {
+    display: flex;
+    justify-content: center;
+    z-index: 1000000;
+    top: 0;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+  }
 }
 
 @media only screen and (max-width: 870px) {

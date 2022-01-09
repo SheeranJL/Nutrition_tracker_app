@@ -10,6 +10,9 @@ export const Provider = (props) => {
   const [foods, setFoods] = useState([]);
   const [goal, setGoal] = useState(1500)
   const [modalFocus, setModalFocus] = useState(false);
+  const [closeModal, setCloseModal] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null);
+
 
   useEffect(() => {
      fetch(`https://trackapi.nutritionix.com/v2/search/instant?query=${search}&detailed=true`, {
@@ -28,6 +31,8 @@ export const Provider = (props) => {
     });
 
   }, [search]);
+
+
 
 
   const addToInventory = (item) => {
@@ -103,7 +108,8 @@ export const Provider = (props) => {
         increaseItem,
         decreaseItem,
         setGoal,
-        setModalFocus
+        setModalFocus,
+        setCloseModal
       },
       data: {
         search,
@@ -111,7 +117,8 @@ export const Provider = (props) => {
         brandedFoods,
         foods,
         goal,
-        modalFocus
+        modalFocus,
+        closeModal
       }
     }}>
     {props.children}
