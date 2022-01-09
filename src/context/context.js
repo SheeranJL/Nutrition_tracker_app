@@ -1,6 +1,7 @@
 import React, {createContext, useEffect, useState} from 'react';
-
+import {saveDataToFirestore} from '../firebase/firebase.js';
 export const appContext = createContext();
+
 
 export const Provider = (props) => {
 
@@ -20,17 +21,20 @@ export const Provider = (props) => {
         'x-app-id': '39bb1e54',
         'x-app-key': '693f9705767c566e3ed889f725dd0d1c',
         'detailed': 'true'
-      },
-    }).then(res => res.json()).then(data => {
-
-      if (data.common.length) {
-        setCommonFoods(data.common)
-      } else {
-        return
+      }}).then(res => res.json()).then(data => {
+        if (data.common.length) {
+          setCommonFoods(data.common)
+        } else {
+          return
+        }
+      });
+      if (currentUser) {
+        saveDataToFirestore(currentUser.id, foods)
       }
-    });
 
-  }, [search]);
+      console.log('test')
+
+  }, [search, foods]);
 
 
 

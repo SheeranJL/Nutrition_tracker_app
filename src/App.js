@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect} from 'react';
 import {appContext} from './context/context.js';
 import logo from './logo.svg';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {auth, createUserProfileDocument} from './firebase/firebase.js';
+import {auth, createUserProfileDocument, fetchDataFromFirestore} from './firebase/firebase.js';
 import './App.css';
 
 //components//
@@ -20,6 +20,8 @@ const App = () => {
 
   useEffect(() => {
     unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      console.log(userAuth)
+
       if (userAuth) {
         console.log(userAuth)
         const userRef = await createUserProfileDocument(userAuth, data.foods)
@@ -36,6 +38,14 @@ const App = () => {
           })
         })
         actions.setCloseModal(true);
+
+        const getDataFromFirestore = async() => {
+          const firestoreData = await fetchDataFromFirestore(userAuth.uid);
+          console.log(firestoreData);
+          const mapDataToState = firestoreData.data.map(item => item)
+          await actions.setFoods([...mapDataToState]);
+        }
+        getDataFromFirestore();
       }
       actions.setCurrentUser(userAuth);
     })

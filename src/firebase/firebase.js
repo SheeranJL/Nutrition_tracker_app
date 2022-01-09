@@ -13,7 +13,9 @@ const firebaseConfig = {
   measurementId: "G-ZKV48XG3G7"
 };
 
+//This function will create a new user document object in Firestore should one not already exist for that user
 export const createUserProfileDocument = async(userAuth, additionalData) => {
+
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -28,15 +30,8 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
     try {
       await userRef.set({
-        user: {
-          displayName,
-          email,
-          createdAt,
-          ...additionalData
-        },
-        data: {
-          additionalData
-        }
+        user: {displayName, email, createdAt, ...additionalData},
+        data: {additionalData}
       })
     } catch(error) {
       console.log('error creating user document', error)
@@ -45,15 +40,41 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
   return userRef;
 }
 
+//This function will save any foods the user adds/removes/modifies to their inventory//
+export const saveDataToFirestore = async(userAuth, data) => {
 
+  const userRef = firestore.doc(`users/${userAuth}`)                  //<-- obtain the user document from firestore for this particular user (userAuth.uid)
+  const collectonRef = firestore.collection(`users/${userAuth}/data`) //<-- obtain the data collection for the particular user
+  const userData = firestore.collection('users').doc(userAuth);
+
+  //try-catch method for saving data to firestore//
+  try {
+    await userData.update({
+      data
+    });
+  } catch(error) {
+    console.log('Error saving to firestore:', error)
+  }
+}
+
+export const fetchDataFromFirestore = async(userAuth) => {
+  const dataRef = await firestore.collection('users').doc(userAuth);
+  const data = await dataRef.get();
+
+  if (!data.exists) {
+    console.log('no data exists for user');
+  } else {
+    return data.data();
+  }
+}
+
+
+
+//Config and export functions//
 firebase.initializeApp(firebaseConfig);
-
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
-
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({prompt: 'select_account'});
-
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
 export default firebase;

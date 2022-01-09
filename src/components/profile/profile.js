@@ -29,41 +29,55 @@ const Profile = () => {
   }
 
   //This function will toggle the login modal open/close//
-  const handleToggleModal = () => {
+  const handleClick = () => {
     actions.setCloseModal(!data.closeModal);
     console.log('test')
   }
 
+  //Handle signing out user - this function using the firebase auth .signOut() method and then we clear existing items from the 'foods' state in context.//
   const handleSignout = async() => {
+    await actions.setFoods(['mango'])
+    await actions.setGoal(5000)
     await auth.signOut();
-    actions.setCloseModal(true);
   }
+
 
   return (
     <div className='profile-container'>
-
       <div className='person-and-info'>
-    
-
-        <div className='profile-pic-container' onClick={data.currentUser ? handleSignout : handleToggleModal} >
-
+        <div className='profile-pic-container'
+          onMouseOver={() => setHover(true)}
+          onMouseOut={() => setHover(false)}
+          onClick={data.currentUser ? () => auth.signOut() : handleClick}
+        >
           {
             data.currentUser
             ? (
+
               <>
-              <img className='profile-picture' src={'https://randomuser.me/api/portraits/women/80.jpg'} style={hover ? {opacity: '0.3'} : {opacity: '1'}}/>
+              <img
+                className='profile-picture'
+                src='https://randomuser.me/api/portraits/women/80.jpg'
+                style={hover ? {opacity: '0.3'} : {opacity: '1'}}
+              />
               <div className='hover-picture'><p>Logout</p></div>
               </>
-            )
-            : (
+
+            ) : (
+
               <>
-              <img className='profile-picture' src='https://randomuser.me/api/portraits/women/80.jpg' style={hover ? {opacity: '0.3'} : {opacity: '1'}}/>
+              <img
+                className='profile-picture'
+                src='https://randomuser.me/api/portraits/women/80.jpg'
+                style={hover ? {opacity: '0.3'} : {opacity: '1'}}
+              />
               <div className='hover-picture'><p>Login</p></div>
               </>
+
             )
+
           }
         </div>
-
 
       </div>
 
@@ -82,7 +96,10 @@ const Profile = () => {
       </div>
 
       <div className='progress-bar-container'>
-        <div className='progress-bar' style={{width: percentageGoal < 100 ? `calc(${percentageGoal}%)` : '100%'}} />
+        <div
+          className='progress-bar'
+          style={{width: percentageGoal < 100 ? `calc(${percentageGoal}%)` : '100%'}}
+        />
         <p className='percentage' style={{width: percentageGoal < 100 ? `calc(${percentageGoal * 2}%)` : '200%'}} >{percentageGoal}%</p>
       </div>
 
