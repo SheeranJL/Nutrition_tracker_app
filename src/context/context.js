@@ -41,7 +41,6 @@ export const Provider = (props) => {
 
 
 
-
   const addToInventory = (item) => {
     const existingItem = foods.find(food => (food.tag_id === item.tag_id && food.mealTime === item.mealTime));
     if (existingItem) {

@@ -14,7 +14,7 @@ const Dropdown = () => {
         commonFoods !== null
         ? (
           <>
-          {commonFoods.filter((item, index) => index < 5).map(item => <DropdownCommon data={item} />)}
+          {commonFoods.filter((item, index) => index < 10).map(item => <DropdownCommon data={item} />)}
           </>
         ) : (
           <h1 className='search-food-desc'>Search for food above</h1>

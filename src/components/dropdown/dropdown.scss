@@ -6,6 +6,14 @@
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 20px;
+  height: 400px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width:6px;
+    border-left: 10px solid grey;
+    border-radius: 10px;
+  }
 
   .search-food-desc {
     color: #c4c2c2;
