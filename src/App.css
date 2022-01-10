@@ -1,7 +1,15 @@
 * {
   box-sizing: border-box;
+  max-height: calc(100vh - 91.11px);
 }
 
 .app-container {
-  height: auto;
+}
+
+@media only screen and (max-width: 870px) {
+
+  * {
+    max-height: calc(100vh - 65px);
+  }
+
 }

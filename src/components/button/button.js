@@ -5,7 +5,7 @@ const CustomButton = ({children, isGoogleSignIn, ...rest}) => {
   return (
     <div className='button-container' >
 
-      <button {...rest} type='submit' className={isGoogleSignIn ? 'google' : ''}>
+      <button {...rest} className={isGoogleSignIn ? 'google' : ''}>
         {children}
       </button>
 

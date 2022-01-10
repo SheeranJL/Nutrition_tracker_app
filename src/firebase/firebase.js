@@ -31,7 +31,7 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
     try {
       await userRef.set({
         user: {displayName, email, createdAt, ...additionalData},
-        data: {additionalData}
+        data: []
       })
     } catch(error) {
       console.log('error creating user document', error)

@@ -15,19 +15,22 @@ export const Provider = (props) => {
   const [currentUser, setCurrentUser] = useState(null);
 
 
+  //When the app detects a new string in the 'search' state variable, it will query the nutrition API and return a list of foods//
+  //Likewise, if the app detects a change in the 'foods' state (when a user add a food item to inventory), the app will save this data to firestore only if a user is logged in//
   useEffect(() => {
      fetch(`https://trackapi.nutritionix.com/v2/search/instant?query=${search}&detailed=true`, {
-      headers: {
-        'x-app-id': '39bb1e54',
-        'x-app-key': '693f9705767c566e3ed889f725dd0d1c',
-        'detailed': 'true'
-      }}).then(res => res.json()).then(data => {
-        if (data.common.length) {
-          setCommonFoods(data.common)
-        } else {
-          return
-        }
-      });
+       headers: {
+         'x-app-id': '39bb1e54',
+         'x-app-key': '693f9705767c566e3ed889f725dd0d1c',
+         'detailed': 'true'
+        }}).then(res => res.json()).then(data => {
+          if (data.common.length) {
+            setCommonFoods(data.common)
+          } else {
+            return
+          }
+        });
+
       if (currentUser) {
         saveDataToFirestore(currentUser.id, foods)
       }

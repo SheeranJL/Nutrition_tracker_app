@@ -36,9 +36,8 @@ const Profile = () => {
 
   //Handle signing out user - this function using the firebase auth .signOut() method and then we clear existing items from the 'foods' state in context.//
   const handleSignout = async() => {
-    await actions.setFoods(['mango'])
-    await actions.setGoal(5000)
     await auth.signOut();
+    await actions.setFoods([])
   }
 
 
@@ -48,7 +47,7 @@ const Profile = () => {
         <div className='profile-pic-container'
           onMouseOver={() => setHover(true)}
           onMouseOut={() => setHover(false)}
-          onClick={data.currentUser ? () => auth.signOut() : handleClick}
+          onClick={data.currentUser ? handleSignout : handleClick}
         >
           {
             data.currentUser
@@ -60,7 +59,10 @@ const Profile = () => {
                 src='https://randomuser.me/api/portraits/women/80.jpg'
                 style={hover ? {opacity: '0.3'} : {opacity: '1'}}
               />
-              <div className='hover-picture'><p>Logout</p></div>
+
+              <div className='hover-picture'>
+                <p>Logout</p>
+              </div>
               </>
 
             ) : (
@@ -71,11 +73,14 @@ const Profile = () => {
                 src='https://randomuser.me/api/portraits/women/80.jpg'
                 style={hover ? {opacity: '0.3'} : {opacity: '1'}}
               />
-              <div className='hover-picture'><p>Login</p></div>
+
+              <div className='hover-picture'>
+                <p>Login</p>
+              </div>
+
               </>
 
             )
-
           }
         </div>
 
@@ -100,7 +105,7 @@ const Profile = () => {
           className='progress-bar'
           style={{width: percentageGoal < 100 ? `calc(${percentageGoal}%)` : '100%'}}
         />
-        <p className='percentage' style={{width: percentageGoal < 100 ? `calc(${percentageGoal * 2}%)` : '200%'}} >{percentageGoal}%</p>
+        <p className='percentage' style={{width: percentageGoal < 100 ? `calc(${percentageGoal}% + 20px)` : '100%'}} >{percentageGoal}%</p>
       </div>
 
       <div className='meal-time-breakdown-container'>

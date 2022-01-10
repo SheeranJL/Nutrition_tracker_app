@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import {appContext} from '../../../context/context.js'
 import '../login/login.scss'
 import CustomButton from '../../button/button.js';
+import {auth, createUserProfileDocument} from '../../../firebase/firebase.js';
 
 const SignUp = ({signMethod, setSignMethod}) => {
 
@@ -13,6 +14,7 @@ const SignUp = ({signMethod, setSignMethod}) => {
     password: '',
     confirmPassword: '',
   })
+
   const {displayName, email, password, confirmPassword} = formValue;
 
   const handleChange = (e) => {
@@ -25,12 +27,26 @@ const SignUp = ({signMethod, setSignMethod}) => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
-
   const handleCloseModal = () => {
     actions.setCloseModal(!data.closeModal)
+  }
+
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+
+    try {
+      const {user} = await auth.createUserWithEmailAndPassword(email, password)
+      await createUserProfileDocument(user, {displayName});
+      setFormValue({
+        displayName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      })
+    } catch(error) {
+      console.log('Error creating manual account', error)
+    }
   }
 
 

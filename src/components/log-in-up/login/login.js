@@ -2,8 +2,7 @@ import React, {useState, useContext} from 'react';
 import {appContext} from '../../../context/context.js';
 import './login.scss';
 import CustomButton from '../../button/button.js';
-
-import {signInWithGoogle} from '../../../firebase/firebase.js';
+import {auth, signInWithGoogle} from '../../../firebase/firebase.js';
 
 const Login = ({signMethod, setSignMethod}) => {
 
@@ -26,6 +25,7 @@ const Login = ({signMethod, setSignMethod}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    auth.signInWithEmailAndPassword(email, password);
   }
 
 
@@ -47,7 +47,7 @@ const Login = ({signMethod, setSignMethod}) => {
         </div>
 
         <div className='buttons'>
-          <CustomButton type='submit' className='button'>Sign In</CustomButton>
+          <CustomButton className='button'>Sign In</CustomButton>
           <CustomButton type='button' isGoogleSignIn onClick={signInWithGoogle}>Sign In</CustomButton>
         </div>
 

@@ -37,7 +37,7 @@ const DropdownCommon = ({data:{photo, food_name, ...rest}}) => {
       {
         selectedFood
         ? (
-          <div style={ {display: hidden ? 'none' : ''} }>
+          <div className='select-food-modal' style={ {display: hidden ? 'none' : ''} }>
           <SelectModal item={selectedFood[0]} handleClick={handleClick}/>
           </div>
         ):(

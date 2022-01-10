@@ -35,9 +35,7 @@ const MainPage = () => {
             <LogInUp />
           </div>
         )
-
       }
-
 
     </div>
   )

@@ -64,7 +64,7 @@ const App = () => {
           </Switch>
         </Router>
 
-      <NewFoodIcon />
+      
 
     </div>
   );

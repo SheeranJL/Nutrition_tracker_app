@@ -3,20 +3,18 @@
   border-radius: 10px;
   flex-direction: column;
   width: 50%;
-  height: auto;
+  height: 400px;
   position: absolute;
   border: 1px solid black;
   background-color: white;
   padding: 10px;
-  margin-top: 70px;
-  width: 50%;
+  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-
   text-align: center;
 
   .select-modal-image-and-close {
@@ -30,11 +28,12 @@
     }
 
     .modal-close {
+      position: absolute;
       margin-left: auto;
       cursor: pointer;
-      color: rgba(62, 0, 158);
-      padding-right: 5px;
-      padding-top: 0px;
+      color: red;
+      padding-right: 15px;
+      right: 0;
       font-size: 20px;
     }
   }
@@ -53,10 +52,8 @@
         background-color: #e0e0e0;
         border-bottom: 4px solid rgba(62, 0, 158);
 
-
         .serving-text {
           font-size: 12px;
-
         }
 
         .serving-size-select {
@@ -64,7 +61,6 @@
           font-size: 24px;
           padding-top: 5px;
         }
-
       }
 
       .arrows {
@@ -84,11 +80,10 @@
         }
       }
 
-
       .servings-info-right {
         display: flex;
         margin-left: auto;
-        justify-content: space-between;
+        justify-content: space-around;
 
         .measurements {
           display: flex;
@@ -106,6 +101,7 @@
         .nut-info {
           display: flex;
           flex-direction: column;
+          margin-right: 10%;
 
 
           .calories {
@@ -125,9 +121,7 @@
     option {
       width: 10px;
     }
-
   }
-
 }
 
 select {
@@ -138,25 +132,29 @@ select {
 
 .modal-add-button-container {
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
 
   .modal-add-button {
-    margin-top: 5%;
-    margin-bottom: 2%;
+    margin-top: 40px;
+    margin-bottom: 40px;
     margin-right: 2%;
     background-color: rgba(62, 0, 158);
-    border-radius: 10%;
+    border-radius: 10px;
     color: white;
     border: none;
     height: 25px;
-    width: 50px;
+    width: 50%;
+    cursor: pointer;
   }
 }
 
+
+
+
 @media only screen and (max-width: 450px) {
   .select-serving {
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
   }
 
@@ -165,8 +163,6 @@ select {
     align-self: center;
     justify-content: flex-start;
     width: 100%;
-
-
   }
 
   .servings-info-left {
@@ -176,7 +172,9 @@ select {
   }
 
   .select-modal-container {
-    height: 465px;
+    height: 400px;
+    width: 90%;
+    margin-top: 25px;
 
     .select-serving {
       justify-content: center;
@@ -184,14 +182,13 @@ select {
 
       .arrows {
         display: flex;
-        flex-direction: row;
         margin-bottom: 10px;
         margin-top: 10px;
+        height: 55px;
+        width: 30px;
 
         .arrow {
           position: relative;
-          width: 48px;
-
         }
       }
     }
