@@ -1,7 +1,13 @@
 .login-screen-container {
   display: flex;
-  margin-top: 20%;
-  width: auto;
+  margin-top: 0%;
+  width: 100%;
   height: calc(100vh - 120px);
   justify-content: center;
+}
+
+@media only screen and (max-width: 370px) {
+
+
+
 }

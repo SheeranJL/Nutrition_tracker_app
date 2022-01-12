@@ -34,6 +34,7 @@ const App = () => {
               displayName: userAuth.multiFactor.user.displayName,
               email: userAuth.multiFactor.user.email,
               photo: userAuth.multiFactor.user.photoURL,
+              ...userAuth
             }
           })
         })
@@ -47,7 +48,7 @@ const App = () => {
         }
         getDataFromFirestore();
       }
-      actions.setCurrentUser(userAuth);
+      actions.setCurrentUser();
     })
   }, [])
 
@@ -64,7 +65,7 @@ const App = () => {
           </Switch>
         </Router>
 
-      
+
 
     </div>
   );

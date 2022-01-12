@@ -6,7 +6,7 @@
   align-self: center;
   width: 350px;
   height: 450px;
-  margin-top: 50%;
+  margin-top: 20%;
   right: 0;
   background-color: grey;
   box-shadow: 1px 4px 30px 1px #888888;
@@ -58,5 +58,22 @@
   span {
     text-align: center;
     margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+
+  .sign-in-container, .sign-up-container {
+    width: 95%;
+    margin-top: 500px;
+
+    .input-section-container {
+      .input-section {
+        input {
+          font-size: 20px;
+          width: 80%;
+        }
+      }
+    }
   }
 }

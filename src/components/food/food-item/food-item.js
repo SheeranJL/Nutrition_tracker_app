@@ -19,9 +19,10 @@ const FoodItem = ({food}) => {
     </div>
 
     <div className='product-display-container'>
+
       <div className='food-item-info-container'>
         <span className='food-item-name'>{food.food_name}</span>
-        <span className='food-info'>{`${food.serving_qty} (${food.serving_weight_grams}g)`}</span>
+        <span className='food-info'>{`${food.serving_qty}x (${food.serving_weight_grams}g)`}</span>
       </div>
 
       <div className='toggle-options'>
@@ -32,6 +33,7 @@ const FoodItem = ({food}) => {
         <span className='calories-info'>{calorieValue} cal</span>
         <span>{food.mealTime}</span>
       </div>
+
     </div>
 
     </div>

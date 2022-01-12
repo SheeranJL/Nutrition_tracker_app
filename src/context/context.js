@@ -9,7 +9,7 @@ export const Provider = (props) => {
   const [commonFoods, setCommonFoods] = useState(null);
   const [brandedFoods, setBrandedFoods] = useState(null);
   const [foods, setFoods] = useState([]);
-  const [goal, setGoal] = useState(1500)
+  const [goal, setGoal] = useState(2000)
   const [modalFocus, setModalFocus] = useState(false);
   const [closeModal, setCloseModal] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);

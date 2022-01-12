@@ -8,6 +8,7 @@ const Profile = () => {
 
   const {data, actions} = useContext(appContext);
   const [hover, setHover] = useState(false)
+  const [profilePic, setProfilePic] = useState(null);
   const history = useHistory();
 
 
@@ -52,11 +53,10 @@ const Profile = () => {
           {
             data.currentUser
             ? (
-
               <>
               <img
                 className='profile-picture'
-                src='https://randomuser.me/api/portraits/women/80.jpg'
+                src={data.currentUser.userData.photo}
                 style={hover ? {opacity: '0.3'} : {opacity: '1'}}
               />
 
@@ -70,12 +70,12 @@ const Profile = () => {
               <>
               <img
                 className='profile-picture'
-                src='https://randomuser.me/api/portraits/women/80.jpg'
+                src='https://www.seekpng.com/png/detail/143-1435868_headshot-silhouette-person-placeholder.png'
                 style={hover ? {opacity: '0.3'} : {opacity: '1'}}
               />
 
               <div className='hover-picture'>
-                <p>Login</p>
+                <p>Sign in</p>
               </div>
 
               </>
@@ -86,7 +86,7 @@ const Profile = () => {
 
       </div>
 
-      <span className='person-name'>Fake User</span>
+      <span className='person-name'>{data.currentUser ? data.currentUser.userData.displayName : ''}</span>
 
       <div className='stats-tracker-container'>
         <div className='consumed-and-goal'>

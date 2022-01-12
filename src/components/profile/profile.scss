@@ -19,8 +19,8 @@
       .hover-picture {
         position: absolute;
         top: 0;
-        margin-top: 50px;
-        margin-left: 25px;
+        margin-top: 15px;
+        margin-left: 11px;
         color: red;
         font-weight: bold;
         font-size: 30px;
@@ -31,6 +31,10 @@
     .profile-picture {
       border-radius: 50%;
       cursor: pointer;
+      max-width: 120px;
+      max-height: 120px;
+      min-width: 120px;
+      min-height: 120px;
     }
   }
 
@@ -79,7 +83,6 @@
       margin-bottom: 10px;
     }
   }
-
 }
 
 .progress-bar-container {
