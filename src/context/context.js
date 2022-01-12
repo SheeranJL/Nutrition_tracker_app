@@ -2,7 +2,6 @@ import React, {createContext, useEffect, useState} from 'react';
 import {saveDataToFirestore} from '../firebase/firebase.js';
 export const appContext = createContext();
 
-
 export const Provider = (props) => {
 
   const [search, setSearch] = useState(null);
@@ -30,13 +29,9 @@ export const Provider = (props) => {
             return
           }
         });
-
       if (currentUser) {
         saveDataToFirestore(currentUser.id, foods)
       }
-
-      console.log('test')
-
   }, [search, foods]);
 
 
@@ -44,7 +39,6 @@ export const Provider = (props) => {
   const addToInventory = (item) => {
     const existingItem = foods.find(food => (food.tag_id === item.tag_id && food.mealTime === item.mealTime));
     if (existingItem) {
-      console.log('yes', existingItem)
         const filtered = foods.filter(food => food !== existingItem)
         const existingItemAdd = {
           ...existingItem,
@@ -65,15 +59,12 @@ export const Provider = (props) => {
 
 
   const increaseItem = (item) => {
-
     const existing = foods.find(food => food.mealTime === item.mealTime && food.tag_id === item.tag_id);
     const filterList = foods.filter(food => food !== existing);
-
     const increaseItemQuantity = {
       ...existing,
       serving_qty: existing.serving_qty + 1
     }
-
       setFoods([
         increaseItemQuantity,
         ...filterList,
@@ -82,22 +73,12 @@ export const Provider = (props) => {
   }
 
 
-
   const decreaseItem = (item) => {
-    const existing = foods.find(food => food.mealTime === item.mealTime && food.tag_id === item.tag_id);
-    const filterList = foods.filter(food => food !== existing);
-
-      const decreaseItemQuantity = {
-        ...existing,
-        serving_qty: existing.serving_qty - 1
-      }
-
+      const existing = foods.find(food => food.mealTime === item.mealTime && food.tag_id === item.tag_id);
+      const filterList = foods.filter(food => food !== existing);
+      const decreaseItemQuantity = { ...existing, serving_qty: existing.serving_qty - 1 }
       if (decreaseItemQuantity.serving_qty > 0) {
-        setFoods([
-          decreaseItemQuantity,
-          ...filterList
-
-        ])
+        setFoods([decreaseItemQuantity, ...filterList])
       } else {
         deleteItem(item)
       }
