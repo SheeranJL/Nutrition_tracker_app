@@ -26,6 +26,10 @@ const Header = () => {
     setModalFocus(!modalFocus)
   }
 
+  const test = () => {
+    console.log('test')
+  }
+
   return (
     <div className='header-component'>
 
@@ -40,7 +44,7 @@ const Header = () => {
       {
         modalFocus
         ? (
-          <div className='dropdown-modal'>
+          <div className='dropdown-modal' onMouseDown={() => test}>
           <Dropdown />
           </div>
 

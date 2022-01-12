@@ -18,18 +18,20 @@ const FoodItem = ({food}) => {
       <img src={food.photo.thumb} />
     </div>
 
-    <div className='food-item-info-container'>
-      <span className='food-item-name'>{food.food_name}</span>
-      <span className='food-info'>{`${food.serving_qty} (${food.serving_weight_grams}g)`}</span>
-    </div>
+    <div className='product-display-container'>
+      <div className='food-item-info-container'>
+        <span className='food-item-name'>{food.food_name}</span>
+        <span className='food-info'>{`${food.serving_qty} (${food.serving_weight_grams}g)`}</span>
+      </div>
 
-    <div className='toggle-options'>
-    <button className='toggle-buttons' onClick={() => actions.deleteItem(food)}>&#10060;</button>
-    </div>
+      <div className='toggle-options'>
+      <button className='toggle-buttons' onClick={() => actions.deleteItem(food)}>&#10060;</button>
+      </div>
 
-    <div className='nutrition-info-container'>
-      <span className='calories-info'>{calorieValue} cal</span>
-      <span>{food.mealTime}</span>
+      <div className='nutrition-info-container'>
+        <span className='calories-info'>{calorieValue} cal</span>
+        <span>{food.mealTime}</span>
+      </div>
     </div>
 
     </div>

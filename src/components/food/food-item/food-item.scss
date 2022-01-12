@@ -17,20 +17,27 @@
 
   }
 
-
-  .food-item-info-container {
+  .product-display-container {
     display: flex;
-    padding-left: 5%;
-    min-width: 20%;
-    max-width: 20%;
-    flex-direction: column;
-    justify-content: center;
+    width: 100%;
+    height: auto;
 
-    .food-item-name {
-      text-align: left;
-      font-weight: bold;
+    .food-item-info-container {
+      display: flex;
+      padding-left: 5%;
+      min-width: 20%;
+      max-width: 20%;
+      flex-direction: column;
+      justify-content: center;
+
+      .food-item-name {
+        text-align: left;
+        font-weight: bold;
+      }
     }
   }
+
+
 
   .nutrition-info-container {
     display: flex;
@@ -71,4 +78,54 @@
 
     }
   }
+}
+
+@media only screen and (max-width: 450px) {
+  .main-food-item-container {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    align-items: center;
+
+    .product-display-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      .food-item-info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        min-width: 100%;
+      }
+
+      .toggle-options {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 100%;
+        margin-top: 5px;
+        button {
+          margin-left: 0;
+          height: 20px;
+          width: 40px;
+          font-size: 10px;
+        }
+      }
+
+      .nutrition-info-container {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        min-width: 100%;
+        padding: 0;
+      }
+
+    }
+
+  }
+
 }
